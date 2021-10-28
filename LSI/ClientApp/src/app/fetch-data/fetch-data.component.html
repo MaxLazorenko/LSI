@@ -1,0 +1,24 @@
+<h1 id="tableLabel">LSI Reports</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!reports"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="reports">
+  <thead>
+    <tr>
+      <th>Nazwa localu</th>
+      <th>Nazwa użytkownika</th>
+      <th>Nazwa exportu</th>
+      <th>Data exportu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let report of reports">
+      <td>{{ report.nameOfRoom }}</td>
+      <td>{{ report.userName }}</td>
+      <td>{{ report.nameOfExport }}</td>
+      <td>{{ report.dateOfExport }}</td>
+    </tr>
+  </tbody>
+</table>
