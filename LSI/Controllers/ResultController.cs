@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace LSI.Controllers
 {
-    public class ResultController: Controller
+    public abstract class ResultController: Controller
     {
         private readonly IMediator _mediator;
 
-        public ResultController(IMediator mediator) => _mediator = mediator;
+        protected ResultController(IMediator mediator) => _mediator = mediator;
 
         protected async Task<IActionResult> FromQueryResult<T>(IResultQueryRequest<T> query, 
                                                                CancellationToken token) where T : class
