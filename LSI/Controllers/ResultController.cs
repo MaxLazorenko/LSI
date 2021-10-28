@@ -24,12 +24,12 @@ namespace LSI.Controllers
             {
                 if (mediatorResult.Error.Type == ErrorType.NOT_FOUND)
                 {
-                    return new NotFoundObjectResult(mediatorResult.Error.Message);
+                    return NotFound(mediatorResult.Error.Message);
                 }
-                return new BadRequestObjectResult(mediatorResult.Error.Message);
+                return BadRequest(mediatorResult.Error.Message);
             }
 
-            return new OkObjectResult(mediatorResult.Value);
+            return Ok(mediatorResult.Value);
         }
 
     }
