@@ -17,15 +17,21 @@ namespace LSI.Domain.Storage.Repository
             _reportContext = reportContext;
         }
 
-        public async Task<List<Report>> GetReports(string room, DateTime dateFrom, DateTime? dateTo, CancellationToken cancellationToken)
+        public async Task<List<Report>> GetReports(string room, DateTime? dateFrom, DateTime? dateTo, CancellationToken cancellationToken)
         {
             var reportsQuery = _reportContext.Reports.AsQueryable()
                                                      .AsNoTracking()
-                                                     .Where(_ => _.NameOfRoom == room && _.DateOfExport >= dateFrom);
+                                                     .Where(_ => _.NameOfRoom == room);
+
+            if (dateFrom.HasValue)
+            {
+                reportsQuery = reportsQuery.Where(_ => _.DateOfExport >= dateFrom);
+            }
+                                                 
 
             if (dateTo.HasValue)
             {
-                reportsQuery = reportsQuery.Where(_ => _.DateOfExport >= dateFrom && _.DateOfExport <= dateTo);
+                reportsQuery = reportsQuery.Where(_ => _.DateOfExport <= dateTo);
             }
 
 

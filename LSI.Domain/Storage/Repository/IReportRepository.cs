@@ -9,6 +9,6 @@ namespace LSI.Domain.Storage.Repository
 {
     public interface IReportRepository
     {
-        public Task<List<Report>> GetReports(string room, DateTime dateFrom, DateTime? dateTo, CancellationToken cancellationToken);
+        public Task<List<Report>> GetReports(string room, DateTime? dateFrom, DateTime? dateTo, CancellationToken cancellationToken);
     }
 }
